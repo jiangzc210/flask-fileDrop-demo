@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+  </head>
+  <body>
+    <h1>File Drop</h1>
+    <table>
+      <tr>
+        <th style="width:70%">File</th>
+        <th>Date Uploaded</th>
+        <th>Remove</th>
+      </tr>
+      {% for item in filelist %}
+      <tr>
+        <td>{{item}}</td>
+        <td>3</td>
+        <td>
+          <img src="delete.png" width="32" height="32">
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <hr/>
+    <h2>Upload File<h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" id="myFile" name="file">
+      <input type="submit">
+    </form>
+  </body>
+</html>
