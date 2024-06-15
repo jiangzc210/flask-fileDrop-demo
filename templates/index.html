@@ -20,10 +20,10 @@ table, th, td {
       </tr>
       {% for item in filelist %}
       <tr>
-        <td>{{item}}</td>
+        <td><a href="/uploads/{{item}}">{{item}}</a></td>
         <td>3</td>
         <td>
-          <img src="delete.png" width="32" height="32">
+          <a href="/remove/{{item}}"><img src="delete.png" width="32" height="32"></a>
         </td>
       </tr>
       {% endfor %}
