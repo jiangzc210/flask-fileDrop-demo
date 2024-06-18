@@ -2,14 +2,18 @@ from flask import Flask
 from flask import render_template, redirect, request, url_for
 from flask import send_from_directory
 from werkzeug.utils import secure_filename
-import os
+import os, time
 
 app = Flask(__name__)
 
 @app.get("/")
 @app.get("/index")
 def index():
-    return render_template("index.html", filelist=os.listdir("./uploads"))
+    filelist = []
+    for x in os.listdir("./uploads"):
+        upload_time = os.path.getmtime("./uploads/"+x)
+        filelist.append(dict(name = x, date = time.asctime(time.localtime(upload_time))))
+    return render_template("index.html", filelist=filelist)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
